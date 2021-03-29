@@ -21,9 +21,12 @@ def index():
 #listings.update update whole thing ({}) listings_data, upsert = True  basically doing a merge
 @app.route("/scrape")
 def scraper():
+    print('----scraper 1 ------------------------------------------------------------------')
     mars_infos = mongo.db.mars_info
+    print('----scraper 2 ------------------------------------------------------------------')
     mars_data = scrape_mars.scrape()
-    listings.update({}, mars_data, upsert=True)  # change this to overwrite
+    print('----scraper 3 ------------------------------------------------------------------')
+    mars_infos.update({}, mars_data, upsert=True)  # change this to overwrite
     return redirect("/", code=302)  #go back to index route. w/code 302 which means "found"
 
 

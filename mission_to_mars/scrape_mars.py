@@ -11,19 +11,26 @@ def scrape():
     # browser = init_browser()
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
-	
-	big_dict = {}
-	url = 'https://redplanetscience.com/'
-	browser.visit(url)
+    
+    big_dict = {}
+    url = 'https://redplanetscience.com/'
+    browser.visit(url)
 
     html = browser.html  #get all the html
     soup = BeautifulSoup(html, 'html.parser')
-
-    title = soup.find('div', class_='content_title').text
-    teaser_text = soup.find('div', class_='article_teaser_body').text
+	
+    article_dict={}
+    print('----------------------------------------------------------------------')
+    print(soup.find('div', class_='content_title').get_text())
+    print(soup.find('div', class_='article_teaser_body').get_text())
+    title = soup.find('div', class_='content_title').get_text()
+    teaser_text = soup.find('div', class_='article_teaser_body').get_text()
+    article_dict['title']=title
+    article_dict['teaser_text']=teaser_text
     print(teaser_text)
 
+    
     # Quit the browser
     browser.quit()
 
-    return listings
+    return article_dict
