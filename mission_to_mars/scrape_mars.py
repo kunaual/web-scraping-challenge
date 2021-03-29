@@ -19,18 +19,34 @@ def scrape():
     html = browser.html  #get all the html
     soup = BeautifulSoup(html, 'html.parser')
 	
-    article_dict={}
-    print('----------------------------------------------------------------------')
+    # get article info
+    print('-----article code------------------------------------------------------------')
     print(soup.find('div', class_='content_title').get_text())
     print(soup.find('div', class_='article_teaser_body').get_text())
     title = soup.find('div', class_='content_title').get_text()
     teaser_text = soup.find('div', class_='article_teaser_body').get_text()
-    article_dict['title']=title
-    article_dict['teaser_text']=teaser_text
-    print(teaser_text)
+    big_dict['title']=title
+    big_dict['teaser_text']=teaser_text
+    
+    # get featured image url
+    iurl = 'https://spaceimages-mars.com/'
+    browser.visit(iurl)
+    print('-----featured image code------------------------------------------------------------')
+    ihtml = browser.html
+    isoup = BeautifulSoup(ihtml, 'html.parser')
+    img = isoup.find('img', class_="headerimage")
+    print(img)
+    #concat the url to the image location
+    featured_image_url = iurl+img['src']
+    print(featured_image_url)
+
+    big_dict['featured_image_url'] = featured_image_url
+
+
+
 
     
     # Quit the browser
     browser.quit()
 
-    return article_dict
+    return big_dict
