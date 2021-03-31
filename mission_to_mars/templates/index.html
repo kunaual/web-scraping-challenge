@@ -8,15 +8,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-</head>
+ </head>
 
 <body>
   <div class="container">
 
     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
-      <!-- hey button class btn   hrf goes to scrap -->
+      <!-- hey button class btn   hrf goes to scrap function -->
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape!</a></p>
     </div>
 
@@ -32,14 +31,15 @@
     <!-- Image and Table -->
     <div class="row">
       <div class="col-md-8">
-        <!-- might need to change this back to 6 6 -->
+
         <h3 class="heading">Featured Mars Image</h3>
         <img src={{mars_stuff.featured_image_url}} alt="NASA Mars featured photo" width="85%">
       </div>
       <div class="col-md-4">
         <h4 class="heading">Mars Facts</h4>
 
-          {{mars_stuff.mars_facts | safe}} <!--need safe word otherwise it will just display the html text TA chris helped me with safe word-->
+        {{mars_stuff.mars_facts | safe}}
+        <!--need safe word otherwise it will just display the html text TA chris helped me with safe word-->
 
       </div>
     </div>
@@ -47,13 +47,15 @@
     <!-- Hemispheres -->
     <div class="row">
       <div class="col-md-12">
-        <!-- need to center this -->
+
         <h3 class="heading">Mars Hemispheres</h3>
         {% for hemi in mars_stuff.hemisphere_image_urls %}
         <div class="col-md-3">
-          <img src={{hemi.img_url}} class="img-thumbnail" alt={{hemi.title}}>
-          <!--width="0%"-->
-          <h4>{{hemi.title}}</h4>
+          <a target="_blank" href={{hemi.img_url}}>
+            <img src={{hemi.img_url}} class="img-thumbnail" alt={{hemi.title}}>
+
+          </a>
+          <h4 class="text-center">{{hemi.title}}</h4>
         </div>
 
         {% endfor %}
