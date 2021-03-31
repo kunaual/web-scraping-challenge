@@ -1,6 +1,7 @@
 from splinter import Browser
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
+import pandas as pd
 
 #uses sprinter to createa a browser.   browser goes to the test site
 #scraps it 
@@ -89,13 +90,20 @@ def scrape():
 
 
     big_dict['hemisphere_image_urls'] = hemisphere_image_urls
-                
 
+    #get mars facts. Even though it's unlikely the diameter, mass and moons facts are going to change between scrapes
+    print('-----mars facts code------------------------------------------------------------')
+    turl = 'https://galaxyfacts-mars.com/'
+    tables = pd.read_html(turl)
+    #table 1 has just mars facts, but based on example page keeping table 0, which is earth-mars comparison
+    mars_facts_df = tables[0]
 
+    #index=false, so don't display/keep the row #s(index) in the final table. header=false to not keep the 0,1,2 column names from the dataframe
+    #considered renaming these, but if the table changes in future scrapes, this solution is more
+    #repeatable as won't know what future column names are to hard update to. 
+    html_table=mars_facts_df.to_html(classes="table table-striped", index=False, header=False)
 
-
-
-
+    big_dict['mars_facts'] = html_table
 
     
     # Quit the browser

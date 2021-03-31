@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 </head>
 
 <body>
@@ -37,7 +38,9 @@
       </div>
       <div class="col-md-4">
         <h4 class="heading">Mars Facts</h4>
-        <img src='//mars_facts.html' alt="table goes here">
+
+          {{mars_stuff.mars_facts | safe}} <!--need safe word otherwise it will just display the html text TA chris helped me with safe word-->
+
       </div>
     </div>
 
@@ -47,10 +50,11 @@
         <!-- need to center this -->
         <h3 class="heading">Mars Hemispheres</h3>
         {% for hemi in mars_stuff.hemisphere_image_urls %}
-            <div class="col-md-3">
-           <img src={{hemi.img_url}} class="img-thumbnail" alt={{hemi.title}}> <!--width="0%"-->
-           <h4>{{hemi.title}}</h4>
-           </div>
+        <div class="col-md-3">
+          <img src={{hemi.img_url}} class="img-thumbnail" alt={{hemi.title}}>
+          <!--width="0%"-->
+          <h4>{{hemi.title}}</h4>
+        </div>
 
         {% endfor %}
 
