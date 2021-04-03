@@ -11,6 +11,7 @@ Files in this repo:
 * mars_facts.html - temp data file used to display table output from to_html command
 * mission_to_mars.ipynb - jupyter notebook used to workout necessary scraping code.
 * scrape_mars.py - uses splinter, beautiful soup, chromedrivermanager, and pandas to perform scrapes to obtain article data, featured image, hemispheres list of images, and a mars facts table.  Code templates taken from the jupyter notebook.
+* screenshot.png, readme_img.png - 2 different screen grabs of index.html 
 
 
 Sample scraping results displayed via index.html:
