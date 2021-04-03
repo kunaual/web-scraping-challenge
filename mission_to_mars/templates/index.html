@@ -8,14 +8,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- </head>
+</head>
 
 <body>
   <div class="container">
 
     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
-      <!-- hey button class btn   hrf goes to scrap function -->
+      <!-- button class btn   hrf goes to scrap function -->
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape!</a></p>
     </div>
 
@@ -31,9 +31,11 @@
     <!-- Image and Table -->
     <div class="row">
       <div class="col-md-8">
-
+        <!-- using target tag below so the images can be clickable to go to image url -->
         <h3 class="heading">Featured Mars Image</h3>
-        <img src={{mars_stuff.featured_image_url}} alt="NASA Mars featured photo" width="85%">
+        <a target="_blank" href={{mars_stuff.featured_image_url}}>
+          <img src={{mars_stuff.featured_image_url}} alt="NASA Mars featured photo" width="85%">
+        </a>
       </div>
       <div class="col-md-4">
         <h4 class="heading">Mars Facts</h4>

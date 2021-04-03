@@ -17,16 +17,16 @@ def index():
     mars_infos = mongo.db.mars_info.find_one()
     return render_template("index.html", mars_stuff=mars_infos)
 
-#the below gets listings collection, then it calls scrape_phone (imported) <dot> scrap (it's in the scrap_phone.py file)
-#listings.update update whole thing ({}) listings_data, upsert = True  basically doing a merge
+#
+#mars_infos.update upsert = True will update matching document, if none matching will inset new.
 @app.route("/scrape")
 def scraper():
-    print('----scraper 1 ------------------------------------------------------------------')
+    print('----scrape 1 ------------------------------------------------------------------')
     mars_infos = mongo.db.mars_info
-    print('----scraper 2 ------------------------------------------------------------------')
+    print('----scrape 2 ------------------------------------------------------------------')
     mars_data = scrape_mars.scrape()
-    print('----scraper 3 ------------------------------------------------------------------')
-    mars_infos.update({}, mars_data, upsert=True)  # change this to overwrite
+    print('----scrape 3 ------------------------------------------------------------------')
+    mars_infos.update({}, mars_data, upsert=True)  
     return redirect("/", code=302)  #go back to index route. w/code 302 which means "found"
 
 
