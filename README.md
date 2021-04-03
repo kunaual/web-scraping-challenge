@@ -14,5 +14,5 @@ Files in this repo:
 
 
 Sample scraping results displayed via index.html:
-![readme_img.png](readme_img.png)
+![readme_img.PNG](readme_img.PNG)
 
